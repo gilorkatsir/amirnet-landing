@@ -32,7 +32,7 @@ const pricingList: PricingProps[] = [
     price: "₪0",
     description: "מושלם להתחלה — בלי התחייבות",
     buttonText: "התחל עכשיו",
-    href: "https://amirnet.vercel.app",
+    href: "https://amirnet.vercel.app/login",
     benefitList: [
       "30 מילים",
       "10 שאלות תרגול",
@@ -48,7 +48,7 @@ const pricingList: PricingProps[] = [
     price: "₪29.9",
     description: "גישה מלאה לכל התכנים",
     buttonText: "שדרג עכשיו",
-    href: "https://amirnet.vercel.app",
+    href: "https://amirnet.vercel.app/login",
     benefitList: [
       "800+ מילים",
       "264 שאלות תרגול",

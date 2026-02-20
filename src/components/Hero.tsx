@@ -1,8 +1,26 @@
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { buttonVariants } from "./ui/button";
+import { Input } from "./ui/input";
 import { HeroCards } from "./HeroCards";
+import { CheckCircle2 } from "lucide-react";
 
 export const Hero = () => {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleWaitlist = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    const existing = JSON.parse(localStorage.getItem("amirnet_waitlist") || "[]");
+    if (!existing.includes(email)) {
+      existing.push(email);
+      localStorage.setItem("amirnet_waitlist", JSON.stringify(existing));
+    }
+    setSubmitted(true);
+    setEmail("");
+  };
+
   return (
     <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
       <div className="text-center lg:text-start space-y-6">
@@ -21,7 +39,7 @@ export const Hero = () => {
 
         <div className="space-y-4 md:space-y-0 md:space-x-reverse md:space-x-4 flex flex-col md:flex-row">
           <a
-            href="https://amirnet.vercel.app"
+            href="https://amirnet.vercel.app/login"
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -39,6 +57,35 @@ export const Hero = () => {
           >
             גלה את התכונות
           </a>
+        </div>
+
+        {/* Email signup for waitlist */}
+        <div className="pt-2">
+          {submitted ? (
+            <div className="flex items-center gap-2 text-green-500 font-medium justify-center lg:justify-start">
+              <CheckCircle2 className="w-5 h-5" />
+              <span>נרשמת בהצלחה! נעדכן אותך בקרוב.</span>
+            </div>
+          ) : (
+            <form onSubmit={handleWaitlist} className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto lg:mx-0">
+              <Input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="הכנס את המייל שלך"
+                className="bg-muted/50 dark:bg-muted/80 flex-1"
+                dir="ltr"
+              />
+              <Button
+                type="submit"
+                className="text-white font-semibold px-5 whitespace-nowrap"
+                style={{ background: "linear-gradient(135deg, #9333ea, #ec4899)" }}
+              >
+                הצטרף לרשימת ההמתנה
+              </Button>
+            </form>
+          )}
         </div>
       </div>
 

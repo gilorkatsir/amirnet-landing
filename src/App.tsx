@@ -3,10 +3,12 @@ import { FAQ } from "./components/FAQ";
 import { Features } from "./components/Features";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
+import { HowItWorks } from "./components/HowItWorks";
 import { Navbar } from "./components/Navbar";
 import { Pricing } from "./components/Pricing";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { About } from "./components/About";
+import { AppShowcase } from "./components/AppShowcase";
 import "./App.css";
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <AppShowcase />
+      <HowItWorks />
       <Features />
       <Cta />
       <Pricing />

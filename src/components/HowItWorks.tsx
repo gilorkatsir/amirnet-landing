@@ -1,70 +1,64 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "../components/Icons";
+import { UserPlus, BookOpen, TrendingUp } from "lucide-react";
 
-interface FeatureProps {
+interface StepProps {
   icon: JSX.Element;
+  stepNumber: string;
   title: string;
   description: string;
 }
 
-const features: FeatureProps[] = [
+const steps: StepProps[] = [
   {
-    icon: <MedalIcon />,
-    title: "Accessibility",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: <UserPlus className="w-8 h-8 text-[#fb923c]" />,
+    stepNumber: "01",
+    title: "הירשם בחינם",
+    description: "צור חשבון תוך שניות והתחל ללמוד מיד. ללא כרטיס אשראי, ללא התחייבות.",
   },
   {
-    icon: <MapIcon />,
-    title: "Community",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: <BookOpen className="w-8 h-8 text-[#ec4899]" />,
+    stepNumber: "02",
+    title: "תרגל כל יום",
+    description: "למד מילים חדשות, פתור שאלות תרגול, והאזן לקטעי הקשבה — הכל מותאם אישית לרמה שלך.",
   },
   {
-    icon: <PlaneIcon />,
-    title: "Scalability",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
-  },
-  {
-    icon: <GiftIcon />,
-    title: "Gamification",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: <TrendingUp className="w-8 h-8 text-[#9333ea]" />,
+    stepNumber: "03",
+    title: "שפר את הציון",
+    description: "עקוב אחרי ההתקדמות שלך וראה שיפור אמיתי בציון האנגלית בפסיכומטרי.",
   },
 ];
 
 export const HowItWorks = () => {
   return (
-    <section
-      id="howItWorks"
-      className="container text-center py-24 sm:py-32"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold ">
-        How It{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Works{" "}
+    <section id="howItWorks" className="container text-center py-24 sm:py-32">
+      <h2 className="text-3xl md:text-4xl font-bold">
+        איך זה{" "}
+        <span className="gradient-text">
+          עובד?
         </span>
-        Step-by-Step Guide
       </h2>
-      <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+      <p className="md:w-3/4 mx-auto mt-4 mb-12 text-xl text-muted-foreground">
+        שלושה צעדים פשוטים להתחלת הדרך להצלחה בפסיכומטרי
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {features.map(({ icon, title, description }: FeatureProps) => (
-          <Card
-            key={title}
-            className="bg-muted/50"
-          >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {steps.map(({ icon, stepNumber, title, description }: StepProps) => (
+          <Card key={title} className="bg-muted/50 relative overflow-hidden group hover:shadow-lg transition-shadow">
+            <div className="absolute top-4 left-4 text-6xl font-display gradient-text opacity-10 group-hover:opacity-20 transition-opacity">
+              {stepNumber}
+            </div>
             <CardHeader>
               <CardTitle className="grid gap-4 place-items-center">
-                {icon}
+                <div className="p-3 bg-primary/10 rounded-full">
+                  {icon}
+                </div>
                 {title}
               </CardTitle>
             </CardHeader>
-            <CardContent>{description}</CardContent>
+            <CardContent className="text-muted-foreground">
+              {description}
+            </CardContent>
           </Card>
         ))}
       </div>

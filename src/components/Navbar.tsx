@@ -75,7 +75,7 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://amirnet.vercel.app"
+                    href="https://amirnet.vercel.app/login"
                     target="_blank"
                     className={`w-[130px] border ${buttonVariants({
                       variant: "secondary",
@@ -107,7 +107,7 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2">
             <a
               rel="noreferrer noopener"
-              href="https://amirnet.vercel.app"
+              href="https://amirnet.vercel.app/login"
               target="_blank"
               className={`gradient-bg text-white ${buttonVariants({ variant: "default" })}`}
               style={{ background: "linear-gradient(135deg, #fb923c, #ec4899, #9333ea)" }}
