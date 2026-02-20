@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-text: #f0f0f5;
+  --color-muted: #8e8e9a;
+  --color-purple: #8B5CF6;
+  --color-pink: #ec4899;
+  --color-orange: #fb923c;
+  --color-green: #22c55e;
+}
+
+/* ═══ Base ═══ */
+html {
+  background: #0a0a0f;
+  color: #f0f0f5;
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: 'Rubik', system-ui, sans-serif;
+  background: #0a0a0f;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ Typography ═══ */
+.font-display {
+  font-family: 'Manrope', 'Rubik', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+/* ═══ Gradient utilities ═══ */
+.gradient-text {
+  background: linear-gradient(135deg, #fb923c, #ec4899, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #fb923c, #ec4899, #9333ea);
+}
+
+/* ═══ Glass ═══ */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ═══ Reveal — elements that animate in ═══ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══ Animations ═══ */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.5), 0 0 60px rgba(236, 72, 153, 0.15); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ═══ Dot grid ═══ */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ═══ Scroll progress ═══ */
+.scroll-progress-bar {
+  height: 2px;
+  background: linear-gradient(90deg, #fb923c, #ec4899, #9333ea);
+  transform-origin: right; /* RTL */
+  transform: scaleX(0);
+}
+
+/* ═══ Reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0s !important; }
+}

@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Demo from '../components/Demo.tsx';
+import Pricing from '../components/Pricing.tsx';
+import '../styles/global.css';
+---
+
+<Layout>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- NAVBAR                                      -->
+<!-- ═══════════════════════════════════════════ -->
+<nav id="navbar" style="transform:translateY(-100%);opacity:0" class="fixed top-0 inset-x-0 z-50 transition-transform duration-300" >
+  <div class="glass" style="border-top:none;border-left:none;border-right:none;">
+    <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+      <a href="#" class="gradient-text font-bold text-lg">AmirNet</a>
+      <div class="hidden sm:flex items-center gap-8 text-sm text-[#8e8e9a]">
+        <a href="#features" class="hover:text-white transition-colors">תכונות</a>
+        <a href="#pricing" class="hover:text-white transition-colors">מחירים</a>
+        <a href="#demo" class="hover:text-white transition-colors">דמו</a>
+      </div>
+      <a href="https://amirnet.vercel.app/login" class="gradient-bg text-white text-sm font-semibold px-5 py-2 rounded-full">התחל בחינם</a>
+    </div>
+    <div id="scroll-progress" class="scroll-progress-bar w-full"></div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- HERO                                        -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden px-5">
+  <!-- BG layers -->
+  <div class="absolute inset-0 dot-grid"></div>
+  <div id="hero-glow" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.15] pointer-events-none" style="background:conic-gradient(from 0deg,#fb923c,#ec4899,#9333ea,#8B5CF6,#fb923c);filter:blur(100px)"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-3xl mx-auto">
+    <h1 class="font-display text-[clamp(2.25rem,7vw,4.5rem)] leading-[1.15] mb-5 gradient-text">
+      הצלח באנגלית של הפסיכומטרי
+    </h1>
+    <p class="text-[#8e8e9a] text-[clamp(1rem,2.5vw,1.375rem)] mb-10 max-w-xl mx-auto leading-relaxed">
+      למידה חכמה עם AI, 800+ מילים, ותרגול אינטראקטיבי
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="https://amirnet.vercel.app/login" class="gradient-bg text-white font-semibold text-lg px-8 py-4 rounded-full" style="animation:pulse-glow 2.5s ease-in-out infinite">
+        התחל בחינם
+      </a>
+      <a href="#demo" class="glass text-white font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/10 transition-colors">
+        צפה בדמו
+      </a>
+    </div>
+  </div>
+
+  <!-- Floating cards — desktop only -->
+  <div class="hidden lg:block absolute inset-0 pointer-events-none z-0">
+    <div id="fc1" class="absolute top-[14%] right-[6%]" style="animation:float-y 6s ease-in-out infinite">
+      <div class="glass rounded-xl p-4 w-44">
+        <div class="text-xs text-[#8e8e9a] mb-1">מילה חדשה</div>
+        <div class="text-lg font-bold text-[#fb923c]">Elaborate</div>
+        <div class="text-sm text-[#8e8e9a]">לפרט, להרחיב</div>
+      </div>
+    </div>
+    <div id="fc2" class="absolute bottom-[18%] left-[8%]" style="animation:float-y 7s ease-in-out 1s infinite">
+      <div class="glass rounded-xl p-4 w-28 text-center">
+        <div class="text-3xl font-bold gradient-text">92%</div>
+        <div class="text-[10px] text-[#8e8e9a] mt-1">ציון אחרון</div>
+      </div>
+    </div>
+    <div id="fc3" class="absolute top-[22%] left-[4%]" style="animation:float-y 8s ease-in-out 2s infinite">
+      <div class="glass rounded-xl p-3 w-32 text-center">
+        <div class="text-2xl">🔥</div>
+        <div class="text-xs font-semibold mt-1">7 ימים ברצף</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#8e8e9a] flex flex-col items-center gap-1" style="animation:bounce-down 2s ease-in-out infinite">
+    <span class="text-xs">גלול למטה</span>
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7"></path></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURES — Bento Grid                       -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="features" class="py-20 sm:py-28 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <h2 class="font-display text-[clamp(1.75rem,5vw,3rem)] mb-3">
+        הכל מה שצריך כדי <span class="gradient-text">להצליח</span>
+      </h2>
+      <p class="text-[#8e8e9a] text-lg max-w-lg mx-auto">כלים חכמים להתכונן לחלק האנגלית בפסיכומטרי</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Vocab — wide -->
+      <div class="reveal sm:col-span-2 lg:col-span-2 glass rounded-2xl p-6 sm:p-7 border-t-[3px] border-t-[#fb923c] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(251,146,60,0.12)] transition-all duration-300">
+        <div class="flex flex-col sm:flex-row sm:items-start gap-4 sm:justify-between">
+          <div>
+            <span class="text-3xl block mb-3">📚</span>
+            <h3 class="text-xl font-bold mb-1">אוצר מילים</h3>
+            <p class="text-[#8e8e9a] text-sm leading-relaxed">800+ מילים מחולקות לקטגוריות עם חזרה מרווחת. כרטיסיות אינטראקטיביות לשינון יעיל.</p>
+          </div>
+          <div class="flex gap-6 shrink-0">
+            <div class="text-center"><div class="text-2xl font-bold text-[#fb923c]">800+</div><div class="text-[#8e8e9a] text-xs">מילים</div></div>
+            <div class="text-center"><div class="text-2xl font-bold text-[#fb923c]">12</div><div class="text-[#8e8e9a] text-xs">קטגוריות</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI — tall -->
+      <div class="reveal lg:row-span-2 glass rounded-2xl p-6 sm:p-7 border-t-[3px] border-t-[#8B5CF6] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(139,92,246,0.12)] transition-all duration-300 flex flex-col">
+        <span class="text-3xl block mb-3">🤖</span>
+        <h3 class="text-xl font-bold mb-1">תרגול AI</h3>
+        <p class="text-[#8e8e9a] text-sm leading-relaxed mb-5">שאלות שנוצרות בזמן אמת על ידי AI חכם עם הסברים מפורטים. התאמה אישית לרמה שלך.</p>
+        <ul class="space-y-3 mt-auto">
+          <li class="flex items-center gap-2 text-sm text-[#8e8e9a]"><span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] shrink-0"></span>שאלות מותאמות אישית</li>
+          <li class="flex items-center gap-2 text-sm text-[#8e8e9a]"><span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] shrink-0"></span>הסברים מפורטים</li>
+          <li class="flex items-center gap-2 text-sm text-[#8e8e9a]"><span class="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] shrink-0"></span>רמת קושי דינמית</li>
+        </ul>
+      </div>
+
+      <!-- Sentences -->
+      <div class="reveal glass rounded-2xl p-6 sm:p-7 border-t-[3px] border-t-[#ec4899] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(236,72,153,0.12)] transition-all duration-300">
+        <span class="text-3xl block mb-3">📝</span>
+        <h3 class="text-xl font-bold mb-1">השלמת משפטים</h3>
+        <p class="text-[#8e8e9a] text-sm leading-relaxed">Sentence Completion, Restatement, ו-Reading Comprehension ממבחנים אמיתיים.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="reveal glass rounded-2xl p-6 sm:p-7 border-t-[3px] border-t-[#22c55e] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(34,197,94,0.12)] transition-all duration-300">
+        <span class="text-3xl block mb-3">📊</span>
+        <h3 class="text-xl font-bold mb-1">מעקב התקדמות</h3>
+        <p class="text-[#8e8e9a] text-sm leading-relaxed">סטטיסטיקות, רצפי למידה ומדדי דיוק.</p>
+      </div>
+
+      <!-- Listening — wide -->
+      <div class="reveal sm:col-span-2 lg:col-span-2 glass rounded-2xl p-6 sm:p-7 border-t-[3px] border-t-[#f97316] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(249,115,22,0.12)] transition-all duration-300">
+        <div class="flex flex-col sm:flex-row sm:items-start gap-4 sm:justify-between">
+          <div>
+            <span class="text-3xl block mb-3">🎧</span>
+            <h3 class="text-xl font-bold mb-1">מבחן הקשבה</h3>
+            <p class="text-[#8e8e9a] text-sm leading-relaxed">28 פרקים, 10 קולות שונים וסימולציה מתוזמנת. בדיוק כמו במבחן האמיתי.</p>
+          </div>
+          <div class="flex gap-6 shrink-0">
+            <div class="text-center"><div class="text-2xl font-bold text-[#f97316]">28</div><div class="text-[#8e8e9a] text-xs">פרקים</div></div>
+            <div class="text-center"><div class="text-2xl font-bold text-[#f97316]">10</div><div class="text-[#8e8e9a] text-xs">קולות</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PWA -->
+      <div class="reveal glass rounded-2xl p-6 sm:p-7 border-t-[3px] border-t-[#06b6d4] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(6,182,212,0.12)] transition-all duration-300">
+        <span class="text-3xl block mb-3">📱</span>
+        <h3 class="text-xl font-bold mb-1">PWA</h3>
+        <p class="text-[#8e8e9a] text-sm leading-relaxed">התקן על הטלפון, עובד אופליין, מצב כהה. הכל במקום אחד.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STATS                                       -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="stats" class="py-16 px-5">
+  <div class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div class="reveal">
+        <div class="font-display text-[clamp(2.5rem,6vw,4rem)] gradient-text counter" data-target="800" data-suffix="+">0+</div>
+        <div class="text-[#8e8e9a] text-sm">מילים באנגלית</div>
+      </div>
+      <div class="reveal">
+        <div class="font-display text-[clamp(2.5rem,6vw,4rem)] gradient-text counter" data-target="264">0</div>
+        <div class="text-[#8e8e9a] text-sm">שאלות תרגול</div>
+      </div>
+      <div class="reveal">
+        <div class="font-display text-[clamp(2.5rem,6vw,4rem)] gradient-text counter" data-target="28">0</div>
+        <div class="text-[#8e8e9a] text-sm">פרקי הקשבה</div>
+      </div>
+      <div class="reveal">
+        <div class="font-display text-[clamp(2.5rem,6vw,4rem)] gradient-text counter" data-target="10">0</div>
+        <div class="text-[#8e8e9a] text-sm">מבטאים שונים</div>
+      </div>
+    </div>
+    <div class="mt-12 h-px bg-gradient-to-l from-transparent via-[#8B5CF6]/30 to-transparent"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- DEMO (React island)                         -->
+<!-- ═══════════════════════════════════════════ -->
+<Demo client:visible />
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PRICING (React island)                      -->
+<!-- ═══════════════════════════════════════════ -->
+<Pricing client:visible />
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CTA                                         -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="py-24 px-5 relative overflow-hidden">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-[0.12] pointer-events-none" style="background:conic-gradient(from 180deg,#fb923c,#ec4899,#9333ea,#8B5CF6,#fb923c);filter:blur(100px)"></div>
+  <div class="relative z-10 text-center max-w-2xl mx-auto reveal">
+    <h2 class="font-display text-[clamp(2rem,6vw,4rem)] gradient-text mb-8">מוכן להצליח?</h2>
+    <a href="https://amirnet.vercel.app/login" class="gradient-bg text-white font-bold text-xl px-10 py-5 rounded-full inline-block" style="animation:pulse-glow 2.5s ease-in-out infinite">
+      התחל עכשיו — חינם
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FOOTER                                      -->
+<!-- ═══════════════════════════════════════════ -->
+<footer class="border-t border-white/[0.06] py-10 px-5">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#8e8e9a]">
+    <span class="gradient-text font-bold text-lg">AmirNet</span>
+    <div class="flex gap-6">
+      <a href="https://amirnet.vercel.app/legal" class="hover:text-white transition-colors">תנאי שימוש</a>
+      <a href="https://amirnet.vercel.app/legal" class="hover:text-white transition-colors">פרטיות</a>
+      <a href="mailto:amirnet.app@gmail.com" class="hover:text-white transition-colors">יצירת קשר</a>
+    </div>
+    <span class="text-xs opacity-50">© 2026 AmirNet</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- MASTER SCRIPT — all animations in one place -->
+<!-- ═══════════════════════════════════════════ -->
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Lenis from 'lenis';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Lenis smooth scroll ── */
+  if (!reducedMotion) {
+    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((t) => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* ── Scroll reveals ── */
+  document.querySelectorAll('.reveal').forEach((el) => {
+    if (reducedMotion) {
+      el.classList.add('visible');
+      return;
+    }
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 88%',
+      once: true,
+      onEnter: () => el.classList.add('visible'),
+    });
+  });
+
+  /* ── Navbar show/hide ── */
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    let lastY = 0;
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const y = self.scroll();
+        if (y > window.innerHeight * 0.7) {
+          const down = y > lastY;
+          gsap.to(navbar, {
+            y: down ? '-100%' : '0%',
+            opacity: down ? 0 : 1,
+            duration: 0.3,
+            overwrite: true,
+          });
+        } else {
+          gsap.to(navbar, { y: '-100%', opacity: 0, duration: 0.2, overwrite: true });
+        }
+        lastY = y;
+      },
+    });
+  }
+
+  /* ── Scroll progress bar ── */
+  const bar = document.getElementById('scroll-progress');
+  if (bar) {
+    gsap.to(bar, {
+      scaleX: 1,
+      ease: 'none',
+      scrollTrigger: { trigger: document.documentElement, start: 'top top', end: 'bottom bottom', scrub: 0.3 },
+    });
+  }
+
+  /* ── Hero glow rotation ── */
+  if (!reducedMotion) {
+    gsap.to('#hero-glow', { rotation: 360, duration: 25, repeat: -1, ease: 'none' });
+  }
+
+  /* ── Floating cards parallax ── */
+  if (!reducedMotion) {
+    ['#fc1', '#fc2', '#fc3'].forEach((sel, i) => {
+      gsap.to(sel, {
+        y: -(60 + i * 30),
+        scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
+      });
+    });
+  }
+
+  /* ── Counters ── */
+  document.querySelectorAll('.counter').forEach((el) => {
+    const target = parseInt(el.getAttribute('data-target') || '0');
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (reducedMotion) {
+      (el as HTMLElement).textContent = target + suffix;
+      return;
+    }
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: target,
+      duration: 2,
+      ease: 'power2.out',
+      snap: { v: 1 },
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+      onUpdate: () => { (el as HTMLElement).textContent = Math.round(obj.v) + suffix; },
+    });
+  });
+</script>
+
+</Layout>
