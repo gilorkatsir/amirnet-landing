@@ -18,110 +18,103 @@ enum PopularPlanType {
 interface PricingProps {
   title: string;
   popular: PopularPlanType;
-  price: number;
+  price: string;
   description: string;
   buttonText: string;
   benefitList: string[];
+  href: string;
 }
 
 const pricingList: PricingProps[] = [
   {
-    title: "Free",
+    title: "חינמי",
     popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get Started",
+    price: "₪0",
+    description: "מושלם להתחלה — בלי התחייבות",
+    buttonText: "התחל עכשיו",
+    href: "https://amirnet.vercel.app",
     benefitList: [
-      "1 Team member",
-      "2 GB Storage",
-      "Upto 4 pages",
-      "Community support",
-      "lorem ipsum dolor",
+      "30 מילים",
+      "10 שאלות תרגול",
+      "1 תרגול AI ביום",
+      "4 פרקי הקשבה",
+      "מעקב התקדמות",
+      "PWA + אופליין",
     ],
   },
   {
-    title: "Premium",
+    title: "פרימיום",
     popular: 1,
-    price: 5,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
+    price: "₪29.9",
+    description: "גישה מלאה לכל התכנים",
+    buttonText: "שדרג עכשיו",
+    href: "https://amirnet.vercel.app",
     benefitList: [
-      "4 Team member",
-      "4 GB Storage",
-      "Upto 6 pages",
-      "Priority support",
-      "lorem ipsum dolor",
-    ],
-  },
-  {
-    title: "Enterprise",
-    popular: 0,
-    price: 40,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
-    benefitList: [
-      "10 Team member",
-      "8 GB Storage",
-      "Upto 10 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+      "800+ מילים",
+      "264 שאלות תרגול",
+      "תרגול AI ללא הגבלה",
+      "28 פרקי הקשבה",
+      "מעקב התקדמות",
+      "PWA + אופליין",
     ],
   },
 ];
 
 export const Pricing = () => {
   return (
-    <section
-      id="pricing"
-      className="container py-24 sm:py-32"
-    >
+    <section id="pricing" className="container py-24 sm:py-32">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Get
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          {" "}
-          Unlimited{" "}
+        תוכניות
+        <span className="gradient-text">
+          {" "}ומחירים{" "}
         </span>
-        Access
       </h2>
       <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        reiciendis.
+        התחל בחינם. שדרג כשתרצה.
       </h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
         {pricingList.map((pricing: PricingProps) => (
           <Card
             key={pricing.title}
             className={
               pricing.popular === PopularPlanType.YES
-                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10"
+                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-primary"
                 : ""
             }
           >
             <CardHeader>
-              <CardTitle className="flex item-center justify-between">
+              <CardTitle className="flex items-center justify-between">
                 {pricing.title}
                 {pricing.popular === PopularPlanType.YES ? (
                   <Badge
                     variant="secondary"
                     className="text-sm text-primary"
                   >
-                    Most popular
+                    הכי פופולרי
                   </Badge>
                 ) : null}
               </CardTitle>
               <div>
-                <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
+                <span className="text-3xl font-bold">{pricing.price}</span>
+                <span className="text-muted-foreground"> /חודש</span>
               </div>
 
               <CardDescription>{pricing.description}</CardDescription>
             </CardHeader>
 
             <CardContent>
-              <Button className="w-full">{pricing.buttonText}</Button>
+              <a href={pricing.href} target="_blank" rel="noreferrer noopener">
+                <Button
+                  className="w-full"
+                  style={
+                    pricing.popular === PopularPlanType.YES
+                      ? { background: "linear-gradient(135deg, #fb923c, #ec4899, #9333ea)" }
+                      : undefined
+                  }
+                >
+                  {pricing.buttonText}
+                </Button>
+              </a>
             </CardContent>
 
             <hr className="w-4/5 m-auto mb-4" />
@@ -129,12 +122,9 @@ export const Pricing = () => {
             <CardFooter className="flex">
               <div className="space-y-4">
                 {pricing.benefitList.map((benefit: string) => (
-                  <span
-                    key={benefit}
-                    className="flex"
-                  >
+                  <span key={benefit} className="flex">
                     <Check className="text-green-500" />{" "}
-                    <h3 className="ml-2">{benefit}</h3>
+                    <h3 className="me-2">{benefit}</h3>
                   </span>
                 ))}
               </div>

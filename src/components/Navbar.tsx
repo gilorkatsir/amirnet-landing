@@ -12,11 +12,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
 
 interface RouteProps {
   href: string;
@@ -24,22 +22,9 @@ interface RouteProps {
 }
 
 const routeList: RouteProps[] = [
-  {
-    href: "#features",
-    label: "Features",
-  },
-  {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#pricing",
-    label: "Pricing",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
+  { href: "#features", label: "תכונות" },
+  { href: "#pricing", label: "מחירים" },
+  { href: "#faq", label: "שאלות נפוצות" },
 ];
 
 export const Navbar = () => {
@@ -47,39 +32,33 @@ export const Navbar = () => {
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
+        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between">
           <NavigationMenuItem className="font-bold flex">
             <a
               rel="noreferrer noopener"
               href="/"
-              className="ml-2 font-bold text-xl flex"
+              className="me-2 font-bold text-xl flex items-center gap-2"
             >
-              <LogoIcon />
-              ShadcnUI/React
+              <span className="gradient-text font-display">AmirNet</span>
             </a>
           </NavigationMenuItem>
 
           {/* mobile */}
           <span className="flex md:hidden">
             <ModeToggle />
-
-            <Sheet
-              open={isOpen}
-              onOpenChange={setIsOpen}
-            >
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
                   className="flex md:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
                 >
-                  <span className="sr-only">Menu Icon</span>
+                  <span className="sr-only">תפריט</span>
                 </Menu>
               </SheetTrigger>
-
-              <SheetContent side={"left"}>
+              <SheetContent side={"right"}>
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                  <SheetTitle className="font-bold text-xl gradient-text">
+                    AmirNet
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
@@ -96,14 +75,13 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    href="https://amirnet.vercel.app"
                     target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
+                    className={`w-[130px] border ${buttonVariants({
                       variant: "secondary",
                     })}`}
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    התחל בחינם
                   </a>
                 </nav>
               </SheetContent>
@@ -129,14 +107,13 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2">
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+              href="https://amirnet.vercel.app"
               target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
+              className={`gradient-bg text-white ${buttonVariants({ variant: "default" })}`}
+              style={{ background: "linear-gradient(135deg, #fb923c, #ec4899, #9333ea)" }}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              התחל בחינם
             </a>
-
             <ModeToggle />
           </div>
         </NavigationMenuList>
